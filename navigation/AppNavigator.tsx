@@ -11,6 +11,9 @@ import PasswordResetScreen from '../components/screens/PasswordResetScreen';
 import PasswordConfirmScreen from '../components/screens/PasswordConfirmScreen';
 import LinkPasswordScreen from '../components/screens/LinkPasswordScreen';
 import HomeScreen from '../components/screens/HomeScreen';
+import EmailVerificationScreen from '../components/screens/EmailVerificationScreen';
+import TokenVerificationScreen from '../components/screens/TokenVerificationScreen';
+import PasswordSetupScreen from '../components/screens/PasswordSetupScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +28,9 @@ const AuthStack = () => {
       <Stack.Screen name="Register" component={RegisterScreen} />
       <Stack.Screen name="PasswordReset" component={PasswordResetScreen} />
       <Stack.Screen name="PasswordConfirm" component={PasswordConfirmScreen} />
+      <Stack.Screen name="EmailVerification" component={EmailVerificationScreen} />
+      <Stack.Screen name="TokenVerification" component={TokenVerificationScreen} />
+      <Stack.Screen name="PasswordSetup" component={PasswordSetupScreen} />
     </Stack.Navigator>
   );
 };

@@ -49,10 +49,38 @@ class ApiService {
     return response.json();
   }
 
-  async register(name: string, email: string, password: string): Promise<AuthResponse> {
+  async sendVerification(email: string): Promise<{ message: string; token?: string }> {
+    const response = await this.request('/auth/send_verification', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+    });
+
+    if (!response.ok) {
+      const error: ApiError = await response.json();
+      throw new Error(error.error.message);
+    }
+
+    return response.json();
+  }
+
+  async verifyEmail(email: string, verificationToken: string): Promise<{ message: string; verified: boolean }> {
+    const response = await this.request('/auth/verify_email', {
+      method: 'POST',
+      body: JSON.stringify({ email, verification_token: verificationToken }),
+    });
+
+    if (!response.ok) {
+      const error: ApiError = await response.json();
+      throw new Error(error.error.message);
+    }
+
+    return response.json();
+  }
+
+  async register(name: string, email: string, password: string, verificationToken: string): Promise<AuthResponse> {
     const response = await this.request('/auth/register', {
       method: 'POST',
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ name, email, password, verification_token: verificationToken }),
     });
 
     if (!response.ok) {
