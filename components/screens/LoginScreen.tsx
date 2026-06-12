@@ -121,6 +121,13 @@ const LoginScreen = () => {
               Don't have an account? <Text style={styles.registerLink}>Sign Up</Text>
             </Text>
           </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.guestButton}
+            onPress={() => navigation.navigate('GuestFeed')}
+          >
+            <Text style={styles.guestText}>Browse as Guest</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
@@ -234,6 +241,14 @@ const styles = StyleSheet.create({
   registerLink: {
     color: '#007AFF',
     fontWeight: '600',
+  },
+  guestButton: {
+    alignItems: 'center',
+    marginTop: 12,
+  },
+  guestText: {
+    color: '#007AFF',
+    fontSize: 14,
   },
 });
 

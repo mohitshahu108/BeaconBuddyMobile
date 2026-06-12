@@ -14,6 +14,7 @@ import HomeScreen from '../components/screens/HomeScreen';
 import EmailVerificationScreen from '../components/screens/EmailVerificationScreen';
 import TokenVerificationScreen from '../components/screens/TokenVerificationScreen';
 import PasswordSetupScreen from '../components/screens/PasswordSetupScreen';
+import BeaconFeedScreen from '../components/screens/BeaconFeedScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +32,11 @@ const AuthStack = () => {
       <Stack.Screen name="EmailVerification" component={EmailVerificationScreen} />
       <Stack.Screen name="TokenVerification" component={TokenVerificationScreen} />
       <Stack.Screen name="PasswordSetup" component={PasswordSetupScreen} />
+      <Stack.Screen
+        name="GuestFeed"
+        component={BeaconFeedScreen}
+        options={{ headerShown: true, title: 'Discover Beacons' }}
+      />
     </Stack.Navigator>
   );
 };
