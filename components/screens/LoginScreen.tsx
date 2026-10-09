@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
+import BrandLogo from '../BrandLogo';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -53,15 +54,14 @@ const LoginScreen = () => {
       style={styles.container}
     >
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.content}>
-          <Text style={styles.title}>BeaconBuddy</Text>
-          <Text style={styles.subtitle}>Sign in to continue</Text>
+        <View style={styles.card}>
+          <BrandLogo size={46} labelSize={28} />
+          <Text style={styles.subtitle}>Welcome back!</Text>
 
           <View style={styles.inputContainer}>
-            <Text style={styles.label}>Email</Text>
             <TextInput
               style={styles.input}
-              placeholder="Enter your email"
+              placeholder="Email or username"
               value={email}
               onChangeText={setEmail}
               autoCapitalize="none"
@@ -71,10 +71,9 @@ const LoginScreen = () => {
           </View>
 
           <View style={styles.inputContainer}>
-            <Text style={styles.label}>Password</Text>
             <TextInput
               style={styles.input}
-              placeholder="Enter your password"
+              placeholder="Password"
               value={password}
               onChangeText={setPassword}
               secureTextEntry
@@ -110,7 +109,7 @@ const LoginScreen = () => {
             onPress={handleGoogleSignIn}
             disabled={loading}
           >
-            <Text style={styles.googleButtonText}>Sign in with Google</Text>
+            <Text style={styles.googleButtonText}>Continue with Google</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -118,7 +117,7 @@ const LoginScreen = () => {
             onPress={() => navigation.navigate('EmailVerification')}
           >
             <Text style={styles.registerText}>
-              Don't have an account? <Text style={styles.registerLink}>Sign Up</Text>
+              New here? <Text style={styles.registerLink}>Create account</Text>
             </Text>
           </TouchableOpacity>
 
@@ -137,118 +136,127 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#F3D7C8',
   },
   scrollContainer: {
     flexGrow: 1,
     justifyContent: 'center',
-    padding: 20,
+    padding: 28,
   },
-  content: {
-    backgroundColor: 'white',
-    borderRadius: 12,
+  card: {
+    backgroundColor: '#F8F0EA',
+    borderRadius: 28,
     padding: 24,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    shadowColor: '#A66C4A',
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.15,
+    shadowRadius: 18,
+    elevation: 4,
   },
   title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#333',
+    fontSize: 30,
+    fontWeight: '800',
+    color: '#2A1F1A',
     textAlign: 'center',
-    marginBottom: 8,
+    marginBottom: 6,
+    letterSpacing: -0.5,
   },
   subtitle: {
     fontSize: 16,
-    color: '#666',
+    color: '#7B5A49',
     textAlign: 'center',
-    marginBottom: 32,
+    marginBottom: 26,
+    fontWeight: '500',
   },
   inputContainer: {
-    marginBottom: 20,
-  },
-  label: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#333',
-    marginBottom: 8,
+    marginBottom: 16,
   },
   input: {
     borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 8,
-    padding: 12,
-    fontSize: 16,
-    backgroundColor: '#f9f9f9',
+    borderColor: '#E9D7CD',
+    borderRadius: 14,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+    fontSize: 15,
+    backgroundColor: '#fff',
+    color: '#2A1F1A',
   },
   loginButton: {
-    backgroundColor: '#007AFF',
-    borderRadius: 8,
-    padding: 14,
+    backgroundColor: '#E08A4A',
+    borderRadius: 14,
+    paddingVertical: 15,
     alignItems: 'center',
     marginTop: 8,
+    shadowColor: '#D77C3D',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.25,
+    shadowRadius: 10,
+    elevation: 3,
   },
   loginButtonText: {
-    color: 'white',
+    color: '#fff',
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: '700',
   },
   forgotPasswordButton: {
     alignItems: 'center',
-    marginTop: 16,
+    marginTop: 14,
   },
   forgotPasswordText: {
-    color: '#007AFF',
+    color: '#4D3C36',
     fontSize: 14,
+    fontWeight: '600',
   },
   divider: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 24,
+    marginVertical: 20,
   },
   dividerLine: {
     flex: 1,
     height: 1,
-    backgroundColor: '#ddd',
+    backgroundColor: '#E6D3C8',
   },
   dividerText: {
     marginHorizontal: 12,
-    color: '#999',
-    fontSize: 14,
+    color: '#8F7669',
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 1,
   },
   googleButton: {
-    backgroundColor: '#4285F4',
-    borderRadius: 8,
-    padding: 14,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#E7D7CA',
+    borderRadius: 14,
+    paddingVertical: 14,
     alignItems: 'center',
   },
   googleButtonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: '600',
+    color: '#2F251F',
+    fontSize: 15,
+    fontWeight: '700',
   },
   registerButton: {
     alignItems: 'center',
-    marginTop: 24,
+    marginTop: 20,
   },
   registerText: {
-    color: '#666',
+    color: '#7B5A49',
     fontSize: 14,
   },
   registerLink: {
-    color: '#007AFF',
-    fontWeight: '600',
+    color: '#E08A4A',
+    fontWeight: '700',
   },
   guestButton: {
     alignItems: 'center',
     marginTop: 12,
   },
   guestText: {
-    color: '#007AFF',
+    color: '#1F4A5E',
     fontSize: 14,
+    fontWeight: '700',
   },
 });
 

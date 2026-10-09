@@ -15,6 +15,7 @@ import EmailVerificationScreen from '../components/screens/EmailVerificationScre
 import TokenVerificationScreen from '../components/screens/TokenVerificationScreen';
 import PasswordSetupScreen from '../components/screens/PasswordSetupScreen';
 import BeaconFeedScreen from '../components/screens/BeaconFeedScreen';
+import BeaconDetailScreen from '../components/screens/BeaconDetailScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +38,11 @@ const AuthStack = () => {
         component={BeaconFeedScreen}
         options={{ headerShown: true, title: 'Discover Beacons' }}
       />
+      <Stack.Screen
+        name="BeaconDetail"
+        component={BeaconDetailScreen}
+        options={{ headerShown: true, title: 'Beacon Details' }}
+      />
     </Stack.Navigator>
   );
 };
@@ -47,11 +53,12 @@ const MainStack = () => {
       screenOptions={{
         headerShown: true,
         headerStyle: {
-          backgroundColor: '#007AFF',
+          backgroundColor: '#E7BA9A',
         },
-        headerTintColor: '#fff',
+        headerTintColor: '#2E211D',
         headerTitleStyle: {
-          fontWeight: 'bold',
+          fontWeight: '800',
+          color: '#2E211D',
         },
       }}
     >
@@ -64,6 +71,11 @@ const MainStack = () => {
         name="LinkPassword"
         component={LinkPasswordScreen}
         options={{ title: 'Link Password' }}
+      />
+      <Stack.Screen
+        name="BeaconDetail"
+        component={BeaconDetailScreen}
+        options={{ title: 'Beacon Details' }}
       />
     </Stack.Navigator>
   );

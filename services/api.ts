@@ -1,4 +1,4 @@
-import { AuthResponse, ApiError, User } from '../types';
+import { AuthResponse, ApiError, Beacon, User } from '../types';
 import { API_CONFIG } from '../config/api';
 
 const BASE_URL = API_CONFIG.BASE_URL;
@@ -153,6 +153,17 @@ class ApiService {
 
   async getCurrentUser(): Promise<User> {
     const response = await this.request('/me');
+
+    if (!response.ok) {
+      const error: ApiError = await response.json();
+      throw new Error(error.error.message);
+    }
+
+    return response.json();
+  }
+
+  async getBeacons(): Promise<Beacon[]> {
+    const response = await this.request('/beacons');
 
     if (!response.ok) {
       const error: ApiError = await response.json();
